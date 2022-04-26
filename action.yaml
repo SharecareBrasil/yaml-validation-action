@@ -1,0 +1,15 @@
+name: 'YAML Validation'
+inputs:
+
+runs:
+  using: "composite"
+  steps:
+  - name: Validate yml extension
+    shell: bash
+    run: find . -regex ".*\.yml$" -exec echo "::error file=$2 wrong extension" {} +
+
+  - name: Get development base name
+    id: get_dev_base
+    shell: bash
+    run: |
+      yamllint .
