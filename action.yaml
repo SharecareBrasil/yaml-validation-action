@@ -9,8 +9,6 @@ runs:
       run: |
         find . -regex ".*\.yml$" -exec echo "::error file={},line=1,col=1:: Wrong extension" \;
         if [[ `find . -regex ".*\.yml$"` ]]; then exit 1; fi
-    - name: Get development base name
-      id: get_dev_base
-      shell: bash
+    - shell: bash
       run: |
-        yamllint -f github .
+        echo "yamllint -f github ."
